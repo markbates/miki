@@ -39,10 +39,13 @@ end
 namespace :deploy do
   task :restart, :roles => :app, :except => { :no_release => true } do
     # sudo "thin restart -s 3 -e production -c /home/#{user}/#{application}/current/"
-    sudo "thin restart -C /home/#{user}/#{application}/current/config/thin.yml -c /home/#{user}/#{application}/current/"
+    sudo "thin restart -C /home/#{user}/#{application}/current/config/thin.yml"
   end
   task :start, :roles => :app do
-    sudo "thin start -s 3 -e production -c /home/#{user}/#{application}/current/"
+    sudo "thin start -C /home/#{user}/#{application}/current/config/thin.yml"
+  end
+  task :stop, :roles => :app do
+    sudo "thin stop -C /home/#{user}/#{application}/current/config/thin.yml"
   end
   
   task :migrate, :roles => :db, :only => { :primary => true } do
