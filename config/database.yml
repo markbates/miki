@@ -1,39 +1,39 @@
-# development:
-#   default:
-#     adapter: mysql
-#     database: miki_development
-#     host: localhost
-#     username: root
-#     password: 
-#     
-# test:
-#   default:
-#     adapter: mysql
-#     database: miki_test
-#     host: localhost
-#     username: root
-#     password:
-# 
-# production:
-#   default:
-#     adapter: mysql
-#     database: miki_production
-#     host: localhost
-#     username: root
-#     password:
-
 development:
   default:
-    adapter: sqlite3
-    database: <%= File.join(Mack.root, "db", "miki_development.db") %>
- 
+    adapter: postgres
+    database: miki_development
+    host: localhost
+    username: ruby
+    password: password
+    
 test:
   default:
-    adapter: sqlite3
-    database: <%= File.join(Mack.root, "db", "miki_test.db") %>
- 
+    adapter: postgres
+    database: miki_test
+    host: localhost
+    username: ruby
+    password: password
+
 production:
   default:
-    adapter: sqlite3
-    database: <%= File.join(Mack.root, "db", "miki_production.db") %>
+    adapter: postgres
+    database: miki_production
+    host: localhost
+    username: ruby
+    password: password
+
+# development:
+#   default:
+#     adapter: sqlite3
+#     database: <%= File.join(Mack.root, "db", "miki_development.db") %>
+#  
+# test:
+#   default:
+#     adapter: sqlite3
+#     database: <%= File.join(Mack.root, "db", "miki_test.db") %>
+#  
+# production:
+#   default:
+#     adapter: sqlite3
+#     database: <%= File.join(Mack.root, "db", "miki_production.db") %>
 
