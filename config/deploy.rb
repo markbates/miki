@@ -69,8 +69,17 @@ namespace :deploy do
   end
 end
 
+namespace :gems do
+  
+  task :install, :roles => :app do
+    sudo "rake gems:install"
+  end
+  
+end
+
 # after "deploy", "deploy:cleanup"
 # after "deploy:cleanup", "reload_nginx"
 # after "restart_thin", "reload_nginx"
 
 after "deploy", "reload_nginx"
+before "deploy:restart", "gems:install"

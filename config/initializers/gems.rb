@@ -6,6 +6,7 @@
 # :source, options, is the source you want to use to install a particular gem.
 require_gems do |gem|
   gem.add "mack-data_mapper", :libs => "mack-data_mapper"
+  gem.add "RedCloth", :version => "4.0.3", :libs => :redcloth
   # examples:
   # gem.add :redgreen, :version => "1.2.2", :libs => :redgreen
   # gem.add :termios
