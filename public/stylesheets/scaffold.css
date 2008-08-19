@@ -67,6 +67,11 @@ body, p, ol, ul, td {
   line-height: 18px;
 }
 
+ol {
+  list-style: decimal;
+  margin: 0px 0px 0px 30px;
+}
+
 pre {
   background-color: #eee;
   padding: 10px;
@@ -97,6 +102,7 @@ div {
   padding: 2px;
   margin: 2px;
   border: 1px dotted #999;
+  background-color: #fff;
 }
 
 a {
@@ -123,10 +129,20 @@ label {
   display: table;
 }
 
+#newest_pages {
+  float: left;
+}
+
+#view {
+/*  clear: left;*/
+  min-width: 600px;
+  float:left;
+}
+
 #wrapper {
-  background-color: #fff;
-  border-style: dotted;
-  border-width: 1px;
+  background-color: #e6e6e6;
+  border-style: none;
+  border-width: 0px;
   margin: 0 auto; 
   text-align: left;
   width: 80%;

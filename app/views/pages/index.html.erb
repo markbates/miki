@@ -1,0 +1,30 @@
+<h1>Listing Pages</h1>
+
+<table>
+  <tr>
+    <th>Url</th>
+    <th>Title</th>
+    <th>Author</th>
+    <th>Body</th>
+    <th>Created at</th>
+    <th>Updated at</th>
+  </tr>
+
+<% for page in @pages %>
+  <tr>
+    <td><%= page.url %></td>
+    <td><%= page.title %></td>
+    <td><%= page.author %></td>
+    <td><%= page.body %></td>
+    <td><%= page.created_at %></td>
+    <td><%= page.updated_at %></td>
+    <td><%= link_to("Show", wiki_page_url(:url => page.url)) %></td>
+    <td><%= link_to("Edit", pages_edit_url(:id => page)) %></td>
+    <td><%= link_to("Delete", pages_delete_url(:id => page), :method => :delete, :confirm => "Are you sure?") %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to("New Page", pages_new_url) %>

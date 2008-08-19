@@ -1,0 +1,8 @@
+<div id="newest_pages">
+  <h3>Newest Pages</h3>
+  <ol>
+    <% for page in @pages -%>
+    <li><%= link_to(page.title, wiki_page_url(:url => page.url)) %></li>
+    <% end -%>
+  </ol>
+</div>

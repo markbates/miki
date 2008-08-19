@@ -50,8 +50,7 @@ namespace :deploy do
   
   task :migrate, :roles => :db, :only => { :primary => true } do
     rake = fetch(:rake, "rake")
-    rails_env = fetch(:rails_env, "production")
-    migrate_env = fetch(:migrate_env, "")
+    mack_env = fetch(:mack_env, "production")
     migrate_target = fetch(:migrate_target, :latest)
 
     directory = case migrate_target.to_sym
@@ -60,7 +59,13 @@ namespace :deploy do
       else raise ArgumentError, "unknown migration target #{migrate_target.inspect}"
       end
 
-    run "cd #{directory}; #{rake} MACK_ENV=#{rails_env} #{migrate_env} db:migrate"
+    run "cd #{directory}; #{rake} db:migrate##{mack_env}"
+  end
+  
+  task :create_production_db, :roles => :db, :only => { :primary => true } do
+    rake = fetch(:rake, "rake")
+    mack_env = fetch(:mack_env, "production")
+    run "cd #{current_path}; #{rake} db:create##{mack_env}"
   end
 end
 
