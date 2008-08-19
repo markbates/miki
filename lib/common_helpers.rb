@@ -2,6 +2,7 @@ module Miki
   module CommonHelpers
     
     def clean_url(url)
+      url = url.to_s
       url = url[1..url.size] if url.starts_with?('/')
       url.downcase
     end
