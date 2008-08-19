@@ -118,6 +118,10 @@ a:hover {
   background-color:#000;
 }
 
+p {
+  margin-bottom: 20px;
+}
+
 label {
   font-weight: bold;
   display: block;
@@ -136,6 +140,7 @@ label {
 #view {
 /*  clear: left;*/
   min-width: 600px;
+  max-width: 600px;
   float:left;
 }
 
