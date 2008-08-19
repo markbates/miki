@@ -101,7 +101,7 @@ td, th {
 div {
   padding: 2px;
   margin: 2px;
-  border: 1px dotted #999;
+/*  border: 1px dotted #999;*/
   background-color: #fff;
 }
 
@@ -139,8 +139,9 @@ label {
 
 #view {
 /*  clear: left;*/
-  min-width: 600px;
-  max-width: 600px;
+/*  min-width: 600px;
+  max-width: 600px;*/
+  max-width: 80%;
   float:left;
 }
 

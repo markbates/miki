@@ -1,6 +1,5 @@
 <h1><%= @page.title %></h1>
-<!-- <pre><%= @page.body.word_wrap %></pre> -->
-<%= simple_format(s(@page.body)) %>
+<%= rc(@page.body) %>
 <p>Author: <%= link_to(@page.author, wiki_page_url(:url => @page.author)) %></p>
 <p>Created at: <%= @page.created_at %></p>
 <p>Updated at: <%= @page.updated_at %></p>
