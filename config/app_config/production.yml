@@ -1,3 +1,6 @@
+mack::site_domain: http://www.mackwiki.com
+log_level: error
+
 cachetastic_default_options:
     # this will dump into the log, configuration info for each cache, as well as the .inspect
     # for each object returned from the cache
