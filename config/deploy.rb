@@ -72,7 +72,8 @@ end
 namespace :gems do
   
   task :install, :roles => :app do
-    run "cd #{current_path}; sudo rake gems:install"
+    run "cd #{current_path}"
+    run "cd #{current_path}; #{sudo} rake gems:install"
   end
   
 end
@@ -82,4 +83,4 @@ end
 # after "restart_thin", "reload_nginx"
 
 after "deploy", "reload_nginx"
-after "deploy:update_code", "gems:install"
+# after "deploy:update_code", "gems:install"
