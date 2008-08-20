@@ -141,6 +141,7 @@ label {
 /*  clear: left;*/
 /*  min-width: 600px;
   max-width: 600px;*/
+  min-width: 600px;
   max-width: 80%;
   float:left;
 }
