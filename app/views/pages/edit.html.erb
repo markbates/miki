@@ -3,18 +3,10 @@
 <%= error_messages_for :page %>
 
 <% form(pages_update_url(:id => @page), :class => "edit_page", :id => "edit_page", :method => :put) do %>
-  <p>
-    <%= :page.text_field :title, :label => true %>
-  </p>
-  <p>
-    <%= :page.text_field :author, :label => true %>
-  </p>
-  <p>
-    <%= :page.text_area :body, :label => true %>
-  </p>
+  <%= render(:partial, :form) %>
   <p>
     <%= submit_button("Update") %>
   </p>
 <% end %>
 
-<%= link_to("Back", pages_index_url) %>
+<%= link_to("Back", wiki_page_url(:url => @page.url)) %>

@@ -13,6 +13,10 @@ module Mack
         Net::HTTP.get_response(uri).body.match(/<h3>(.+)<\/h3>/).captures.first
       end
       
+      def time_format(time)
+        time.strftime("%m/%d/%Y %H:%M")
+      end
+      
     end
   end
 end

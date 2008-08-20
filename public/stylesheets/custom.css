@@ -168,3 +168,9 @@ body.custom { background: #fff; color: #222; font-family: Verdana, sans-serif; }
 	.custom #search_form .search_input { color: #777; font-family: Verdana, sans-serif; border-color: #999; border-right-color: #eee; border-bottom-color: #eee; }
 	
 	.custom #search_form .search_input:focus { border-top-color: #666; border-left-color: #666; border-right-color: #ddd; border-bottom-color: #ddd; }
+	
+	
+	label {
+    font-weight: bold;
+    display: block;
+  }
