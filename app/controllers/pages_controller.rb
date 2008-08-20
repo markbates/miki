@@ -3,6 +3,8 @@ class PagesController
   
   layout :wiki
   
+  cache_pages :only => :display
+  
   # GET /pages
   def index
     @pages = Page.all
@@ -32,6 +34,7 @@ class PagesController
     @page = Page.new(params[:page])
     if @page.save
       cookies[:author] = @page.author
+      Cachetastic::Caches::PageCache.delete("/" + @page.url)
       redirect_to(wiki_page_url(:url => @page.url))
     else
       render(:action, "new")
@@ -43,6 +46,7 @@ class PagesController
     @page = Page.get(params[:id])
     if @page.update_attributes(params[:page])
       cookies[:author] = @page.author
+      Cachetastic::Caches::PageCache.delete("/" + @page.url)
       redirect_to(wiki_page_url(:url => @page.url))
     else
       render(:action, "edit")

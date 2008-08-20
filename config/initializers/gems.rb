@@ -7,6 +7,7 @@
 require_gems do |gem|
   gem.add "mack-data_mapper", :libs => "mack-data_mapper"
   gem.add "mack-javascript", :libs => "mack-javascript"
+  gem.add "mack-caching", :libs => "mack-caching"
   gem.add "RedCloth", :version => "4.0.3", :libs => :redcloth
   # examples:
   # gem.add :redgreen, :version => "1.2.2", :libs => :redgreen
