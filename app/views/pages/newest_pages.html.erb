@@ -2,7 +2,7 @@
   <h2 class="widgettitle">Newest Pages</h2>
   <ul>
     <% for page in @pages -%>
-    <li><%= link_to(page.title, wiki_page_url(:url => page.url)) %></li>
+    <li><%= link_to(page.title.truncate(30), wiki_page_url(:url => page.url)) %></li>
     <% end -%>
   </ul>
 </li>
