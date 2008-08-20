@@ -5,6 +5,12 @@ module Mack
       
       def rc(text)
         html = RedCloth.new(text, [:filter_html, :no_span_caps]).to_html
+        html.scan(/[^\\]([A-Z]\S+[A-Z]\S+)\s/).each do |s|
+          s.each do |p|
+            html.gsub!(p, link_to(p, wiki_page_url(:url => clean_url(p.underscore))))
+          end
+        end
+        html
       end
       
       def current_release

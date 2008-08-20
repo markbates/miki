@@ -18,6 +18,7 @@ class PagesController
   # GET /pages/new
   def new
     @page = Page.new(:url => params[:url], :author => (cookies[:author] ||= "Anonymous Coward"), :title => (params[:title] || params[:url]))
+    @page.title = @page.title.titleize unless @page.title.blank?
   end
 
   # GET /pages/1/edit
