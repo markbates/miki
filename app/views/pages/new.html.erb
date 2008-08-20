@@ -4,10 +4,10 @@
 
 <% form(pages_create_url, :class => "new_page", :id => "new_page") do %>
   <p>
-    <%= :page.text_field :url, :label => true %>
+    <%= :page.text_field :url, :label => true, :size => 50 %>
   </p>
   <%= render(:partial, :form) %>
   <p>
-    <%= submit_button("Create") %>
+    <%= submit_button("Create", :class => :submit_button) %>
   </p>
 <% end %>

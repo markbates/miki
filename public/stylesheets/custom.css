@@ -173,4 +173,12 @@ body.custom { background: #fff; color: #222; font-family: Verdana, sans-serif; }
 	label {
     font-weight: bold;
     display: block;
+    font-size: 20px;
+  }
+  
+  .submit_button {
+    font-weight: bold;
+    display: block;
+    font-size: 20px;
+    float: right;
   }

@@ -5,7 +5,7 @@
 <% form(pages_update_url(:id => @page), :class => "edit_page", :id => "edit_page", :method => :put) do %>
   <%= render(:partial, :form) %>
   <p>
-    <%= submit_button("Update") %>
+    <%= submit_button("Update", :class => :submit_button) %>
   </p>
 <% end %>
 
