@@ -2,6 +2,7 @@ Mack::Routes.build do |r|
   
   r.with_options(:controller => :pages) do |map|
     map.newest_pages "/pages/newest_pages/:limit", :action => :newest_pages
+    map.recently_updated_pages "/pages/recently_updated_pages/:limit", :action => :recently_updated_pages
   end
   
   r.resource :pages # Added by rake generate:scaffold name=page

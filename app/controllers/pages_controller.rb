@@ -11,6 +11,8 @@ class PagesController
   # GET /pages/1
   def show
     @page = Page.get(params[:id])
+    raise Miki::PageNotFoundError.new if @page.nil?
+    redirect_to(wiki_page_url(:url => @page.url))
   end
 
   # GET /pages/new
@@ -63,6 +65,12 @@ class PagesController
     limit = params[:limit] || 5
     @pages = Page.all(:order => [:created_at.desc], :limit => limit.to_i)
     render(:action, :newest_pages, :layout => false)
+  end
+  
+  def recently_updated_pages
+    limit = params[:limit] || 5
+    @pages = Page.all(:order => [:updated_at.desc], :limit => limit.to_i)
+    render(:action, :recently_updated_pages, :layout => false)
   end
 
 end
