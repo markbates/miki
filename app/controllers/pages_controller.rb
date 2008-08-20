@@ -61,7 +61,7 @@ class PagesController
   end
   
   def display
-    @page = Page.first(:url => params[:url].downcase)
+    @page = Page.first(:url => clean_url(params[:url]))
     raise Miki::PageNotFoundError.new if @page.nil?
     render(:action, :display)
   end
