@@ -10,6 +10,9 @@ module Mack
             html.gsub!(p, link_to(p, wiki_page_url(:url => clean_url(p.underscore))))
           end
         end
+        html.scan(/(\\[A-Z]\S+[A-Z]\S+)\s/).each do |s|
+          s.each {|p| html.gsub!(p, p[1..p.size])}
+        end
         html
       end
       
