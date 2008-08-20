@@ -1,6 +1,8 @@
 class PagesController
   include Mack::Controller
   
+  layout :wiki
+  
   # GET /pages
   def index
     @pages = Page.all
@@ -54,7 +56,7 @@ class PagesController
   def display
     @page = Page.first(:url => params[:url].downcase)
     raise Miki::PageNotFoundError.new if @page.nil?
-    render(:action, :display, :layout => :wiki)
+    render(:action, :display)
   end
 
   def newest_pages

@@ -3,7 +3,9 @@
 <%= error_messages_for :page %>
 
 <% form(pages_create_url, :class => "new_page", :id => "new_page") do %>
-  <%= :page.hidden_field :url %>
+  <p>
+    <%= :page.text_field :url, :label => true %>
+  </p>
   <p>
     <%= :page.text_field :title, :label => true %>
   </p>

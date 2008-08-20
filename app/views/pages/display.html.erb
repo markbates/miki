@@ -1,6 +1,8 @@
-<h1><%= @page.title %></h1>
-<%= rc(@page.body) %>
-<p>Author: <%= link_to(@page.author, wiki_page_url(:url => @page.author)) %></p>
-<p>Created at: <%= @page.created_at %></p>
-<p>Updated at: <%= @page.updated_at %></p>
-<p><%= link_to("Edit", pages_edit_url(:id => @page)) %></p>
+<h1><%= link_to(@page.title, wiki_page_url(:url => @page.url)) %></h1>
+<div class="entry">
+  <%= rc(@page.body) %>
+  <p>Author: <%= link_to(@page.author, wiki_page_url(:url => @page.author)) %></p>
+  <p>Created at: <%= @page.created_at %></p>
+  <p>Updated at: <%= @page.updated_at %></p>
+  <p><%= link_to("Edit", pages_edit_url(:id => @page)) %></p>
+</div>
