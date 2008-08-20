@@ -12,7 +12,10 @@
   <![endif]-->
   <!--[if lte IE 6]>
   <%= stylesheet :ie6 %>
-  <![endif]-->
+  <![endif]--> 
+  <script src="/javascripts/prototype.js"></script>
+  <script src="/javascripts/textile-editor.js"></script>
+  
 
 </head>
 <body class="custom">
@@ -22,7 +25,9 @@
     <a href="http://www.mackframework.com" title="Mack Framework">Mack Framework</a>
     <p id="tagline">A Distributed Ruby Web Application Framework</p>
   </div>
-</div>
+</div> 
+
+
   
 <div id="container">
   <%= render(:partial, :nav) %>
@@ -46,6 +51,12 @@
 <div id="footer">
   <p>&copy; Mack Framework</p>
 </div>
+
+<script type="text/javascript">
+Event.observe(window, "load", function() {
+TextileEditor.initialize("page_body", "extended");
+});
+</script>
 
 </body>
 </html>

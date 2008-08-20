@@ -8,4 +8,4 @@ mack::testing_framework: rspec
 # In order to have RJS support, you will need to perform the following steps:
 # 1.  Uncomment the code below, and make sure that the framework is the one you want to use
 # 2.  run:  rake generate:javascript
-# mack::js_framework: jquery
+mack::js_framework: prototype
