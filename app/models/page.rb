@@ -3,7 +3,7 @@ class Page
 
   property :id, Serial
   property :url, String
-  property :title, String
+  property :title, String, :size => 250
   property :author, String
   property :body, Text
   property :created_at, DateTime
