@@ -12,6 +12,10 @@ class Page
   before :save, :handle_url
   after :save, :expire_page_cache
   
+  def self.recent(col = :created_at, limit = 5)
+    Page.all(:order => [col.desc], :limit => (limit || 5).to_i)
+  end
+  
   private
   def handle_url
     self.url = clean_url(self.url)

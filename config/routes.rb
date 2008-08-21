@@ -11,9 +11,7 @@ Mack::Routes.build do |r|
   
   r.wiki_page "/:url", :controller => :pages, :action => :display
   
-  # r.home_page "/", :controller => :default, :action => :index
   r.home_page "/", :controller => :pages, :action => :display, :url => "home"
-  # r.connect "/", :redirect_to => "/home"
   
   r.defaults
   

@@ -1,8 +1,6 @@
 class PagesController
   include Mack::Controller
   
-  layout :wiki
-  
   cache_pages :only => :display
   
   # GET /pages
@@ -61,19 +59,17 @@ class PagesController
   def display
     @page = Page.first(:url => clean_url(params[:url]))
     raise Miki::PageNotFoundError.new if @page.nil?
-    render(:action, :display)
   end
 
   def newest_pages
     limit = params[:limit] || 5
-    @pages = Page.all(:order => [:created_at.desc], :limit => limit.to_i)
-    render(:action, :newest_pages, :layout => false)
+    @pages = Page.recent(:created_at, params[:limit])
+    render(:partial, :newest_pages)
   end
   
   def recently_updated_pages
-    limit = params[:limit] || 5
-    @pages = Page.all(:order => [:updated_at.desc], :limit => limit.to_i)
-    render(:action, :recently_updated_pages, :layout => false)
+    @pages = Page.recent(:updated_at, params[:limit])
+    render(:partial, :recently_updated_pages)
   end
 
 end
