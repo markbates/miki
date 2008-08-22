@@ -18,6 +18,10 @@ class Page
     Page.all(:order => [col.desc], :limit => (limit || 5).to_i)
   end
   
+  def to_param
+    clean_url(self.url)
+  end
+  
   private
   def handle_url
     self.url = clean_url(self.url)

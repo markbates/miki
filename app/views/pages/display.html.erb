@@ -1,10 +1,10 @@
-<h1><%= link_to(@page.title, wiki_page_url(:url => @page.url)) %></h1>
+<h1><%= link_to(@page.title, wiki_page_url(:url => @page)) %></h1>
 <div class="entry">
 
   <% unless @page.body.blank? -%>
     <%= rc(@page.body) %>
   <% else -%>
-    <p>This page is blank. Would you like to <%= link_to("add content", pages_edit_url(:id => @page)) %>?</p>
+    <p>This page is blank. Would you like to <%= link_to("add content", pages_edit_url(:id => @page.id)) %>?</p>
   <% end -%>
 
   <p>
@@ -12,5 +12,5 @@
     Created at: <%= time_format(@page.created_at) %><br />
     Updated at: <%= time_format(@page.updated_at) %>
   </p>
-  <p><%= link_to("Edit", pages_edit_url(:id => @page)) %></p>
+  <p><%= link_to("Edit", pages_edit_url(:id => @page.id)) %></p>
 </div>
