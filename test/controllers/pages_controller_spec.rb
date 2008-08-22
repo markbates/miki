@@ -4,7 +4,10 @@ describe PagesController do
   
   describe "index" do
     
-    it "should list pages"
+    it "should list pages" do
+      get pages_index_url
+      response.should be_successful
+    end
     
   end
   

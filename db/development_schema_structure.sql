@@ -30,7 +30,7 @@ CREATE TABLE migration_info (
 CREATE TABLE pages (
     id integer NOT NULL,
     url character varying(50) NOT NULL,
-    title character varying(50) NOT NULL,
+    title character varying(250) NOT NULL,
     author character varying(50) NOT NULL,
     body text NOT NULL,
     created_at timestamp without time zone NOT NULL,
@@ -43,7 +43,6 @@ CREATE TABLE pages (
 --
 
 CREATE SEQUENCE pages_id_seq
-    START WITH 1
     INCREMENT BY 1
     NO MAXVALUE
     NO MINVALUE
