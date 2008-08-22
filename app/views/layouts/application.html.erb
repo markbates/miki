@@ -5,7 +5,7 @@
 
   <title><%= (@page.nil? ? 'Miki: Page Not Found' : @page.title) %></title>
 
-  <%= stylesheet :style, :custom %>
+  <%= stylesheet [:style, :custom] %>
 
   <!--[if lte IE 7]>
   <%= stylesheet :ie7 %>
