@@ -4,19 +4,22 @@
   <tr>
     <th>Username</th>
     <th>Email</th>
+    <th>Display Name</th>
     <th>Created at</th>
-    <th>Updated at</th>
   </tr>
 
 <% for user in @users %>
   <tr>
     <td><%= user.username %></td>
-    <td><%= user.email %></td>
+    <td><%= mail_to(user.email) %></td>
+    <td><%= user.display_name %></td>
     <td><%= user.created_at %></td>
-    <td><%= user.updated_at %></td>
     <td><%= link_to("Show", users_show_url(:id => user)) %></td>
-    <td><%= link_to("Edit", users_edit_url(:id => user)) %></td>
-    <td><%= link_to("Delete", users_delete_url(:id => user), :method => :delete, :confirm => "Are you sure?") %></td>
+    <% if user == current_user -%>
+      <td><%= link_to("Edit", users_edit_url(:id => user)) %></td>
+    <% else -%>
+      <td>&nbsp;</td>
+    <% end -%>
   </tr>
 <% end %>
 </table>

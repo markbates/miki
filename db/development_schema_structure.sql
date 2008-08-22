@@ -31,8 +31,23 @@ CREATE TABLE pages (
     id integer NOT NULL,
     url character varying(50) NOT NULL,
     title character varying(250) NOT NULL,
-    author character varying(50) NOT NULL,
+    user_id integer NOT NULL,
     body text NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: users; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE users (
+    id integer NOT NULL,
+    username character varying(20) NOT NULL,
+    password character varying(50) NOT NULL,
+    email character varying(200) NOT NULL,
+    display_name character varying(250) NOT NULL,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );
@@ -57,10 +72,35 @@ ALTER SEQUENCE pages_id_seq OWNED BY pages.id;
 
 
 --
+-- Name: users_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE users_id_seq
+    INCREMENT BY 1
+    NO MAXVALUE
+    NO MINVALUE
+    CACHE 1;
+
+
+--
+-- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE users_id_seq OWNED BY users.id;
+
+
+--
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE pages ALTER COLUMN id SET DEFAULT nextval('pages_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regclass);
 
 
 --
@@ -77,6 +117,14 @@ ALTER TABLE ONLY migration_info
 
 ALTER TABLE ONLY pages
     ADD CONSTRAINT pages_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: users_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY users
+    ADD CONSTRAINT users_pkey PRIMARY KEY (id);
 
 
 --

@@ -5,6 +5,7 @@ class Page
   property :url, String
   property :title, String, :size => 250
   property :body, Text
+  property :user_id, Integer
   property :created_at, DateTime
   property :updated_at, DateTime
   

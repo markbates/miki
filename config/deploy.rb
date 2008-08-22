@@ -67,6 +67,12 @@ namespace :deploy do
     mack_env = fetch(:mack_env, "production")
     run "cd #{current_path}; #{rake} db:create##{mack_env}"
   end
+  
+  task :recreate_production_db, :roles => :db, :only => { :primary => true } do
+    rake = fetch(:rake, "rake")
+    mack_env = fetch(:mack_env, "production")
+    run "cd #{current_path}; #{rake} db:recreate##{mack_env}"
+  end
 end
 
 namespace :gems do

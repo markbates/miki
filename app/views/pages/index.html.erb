@@ -1,6 +1,6 @@
 <h1>Listing Pages</h1>
 <% for page in @pages %>
-  <h4><%= link_to(page.title, wiki_page_url(:url => page.url)) %> by <%= page.author %></h4>
+  <h4><%= link_to(page.title, wiki_page_url(:url => page.url)) %> by <%= page.user.display_name %></h4>
 <% end %>
 
 <br />

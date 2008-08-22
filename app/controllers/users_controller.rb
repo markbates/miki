@@ -22,6 +22,7 @@ class UsersController
   # GET /users/1/edit
   def edit
     @user = User.get(params[:id])
+    return redirect_to(login_url) if @user != current_user
   end
 
   # POST /users
@@ -41,6 +42,7 @@ class UsersController
   # PUT /users/1
   def update
     @user = User.get(params[:id])
+    return redirect_to(login_url) if @user != current_user
     if @user.update_attributes(params[:user])
       redirect_to(users_show_url(:id => @user))
     else

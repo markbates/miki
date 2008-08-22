@@ -4,13 +4,16 @@
 
 <% form(users_update_url(:id => @user), :class => "edit_user", :id => "edit_user", :method => :put) do %>
   <p>
-    <%= :user.text_field :username, :label => true %>
-  </p>
-  <p>
     <%= :user.password_field :password, :label => true %>
   </p>
   <p>
+    <%= :user.password_field :password_confirmation, :label => true %>
+  </p>
+  <p>
     <%= :user.text_field :email, :label => true %>
+  </p>
+  <p>
+    <%= :user.text_field :display_name, :label => true %>
   </p>
   <p>
     <%= submit_button("Update") %>
