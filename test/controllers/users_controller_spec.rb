@@ -16,7 +16,12 @@ describe UsersController do
   
   describe "new" do
     
-    it "should show a form to create a new user"
+    it "should not allow you to register" do
+      get users_new_url
+      response.should be_successful
+      response.body.should match('<h1>We\'re Sorry...</h1>')
+      response.body.should match('<h3>MackWiki.com is currently not allowing user registrations. Please try back at another time. Thank you.</h3>')
+    end
     
   end
   
@@ -28,7 +33,12 @@ describe UsersController do
   
   describe "create" do
     
-    it "should create a user"
+    it "should not allow you to register" do
+      post users_create_url
+      response.should be_successful
+      response.body.should match('<h1>We\'re Sorry...</h1>')
+      response.body.should match('<h3>MackWiki.com is currently not allowing user registrations. Please try back at another time. Thank you.</h3>')
+    end
     
   end
   
