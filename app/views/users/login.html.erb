@@ -1,0 +1,15 @@
+<% if tell[:notice] -%>
+  <div id="tell_notice"><%= tell[:notice] %></div>
+<% end -%>
+
+<%= error_messages_for :user %>
+
+<% form(do_login_url) do -%>
+  <p>
+    <%= :user.text_field :username, :label => true %>
+  </p>
+  <p>
+    <%= :user.password_field :password, :label => true %>
+  </p>
+  <p><%= submit_button "Login" %></p>
+<% end -%>

@@ -1,0 +1,22 @@
+<p>
+  <h1>User</h1>
+</p>
+<p>
+  <%= :user.label_tag :username %>
+  <%= @user.username %>
+</p>
+<p>
+  <%= :user.label_tag :email %>
+  <%= @user.email %>
+</p>
+<p>
+  <%= :user.label_tag :created_at %>
+  <%= @user.created_at %>
+</p>
+<p>
+  <%= :user.label_tag :updated_at %>
+  <%= @user.updated_at %>
+</p>
+
+<%= link_to("Edit", users_edit_url(:id => @user)) %> |
+<%= link_to("Back", users_index_url) %>

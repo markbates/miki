@@ -1,0 +1,20 @@
+<h1>Edit User</h1>
+
+<%= error_messages_for :user %>
+
+<% form(users_update_url(:id => @user), :class => "edit_user", :id => "edit_user", :method => :put) do %>
+  <p>
+    <%= :user.text_field :username, :label => true %>
+  </p>
+  <p>
+    <%= :user.password_field :password, :label => true %>
+  </p>
+  <p>
+    <%= :user.text_field :email, :label => true %>
+  </p>
+  <p>
+    <%= submit_button("Update") %>
+  </p>
+<% end %>
+
+<%= link_to("Back", users_index_url) %>

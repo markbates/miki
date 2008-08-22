@@ -1,4 +1,15 @@
 Mack::Routes.build do |r|
+
+  # r.with_options(:controller => :users) do |map|
+  #   r.login "/users/login", :action => :login
+  #   r.do_login "/users/do_login", :action => :do_login, :method => :post
+  # end
+  
+  r.login "/users/login", :controller => :users, :action => :login
+  r.do_login "/users/login", :controller => :users, :action => :do_login, :method => :post
+
+  r.resource :users # Added by rake generate:scaffold name=user
+  
   
   r.with_options(:controller => :pages) do |map|
     map.newest_pages "/pages/newest_pages/:limit", :action => :newest_pages

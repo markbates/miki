@@ -30,7 +30,7 @@
 
   
 <div id="container">
-  <%= render(:partial, :nav) %>
+  <%= render(:partial, "pages/nav") %>
   <div id="content_box">
 
     <div id="content" class="page">
@@ -39,7 +39,7 @@
 
     <div id="sidebar">
       <ul class="sidebar_list">
-        <%= render(:partial, :current_release) %>
+        <%= render(:partial, "pages/current_release") %>
         <%= render(:url, newest_pages_url(:limit => 5)) %>
         <%= render(:url, recently_updated_pages_url(:limit => 5)) %>
       </ul>

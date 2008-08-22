@@ -3,6 +3,8 @@ class PagesController
   
   cache_pages :only => :display
   
+  before_filter :authorized?, :only => [:new, :edit, :create, :update, :delete]
+  
   # GET /pages
   def index
     @pages = Page.all
@@ -17,21 +19,20 @@ class PagesController
 
   # GET /pages/new
   def new
-    @page = Page.new(:url => params[:url], :author => (cookies[:author] ||= "Anonymous Coward"), :title => (params[:title] || params[:url]))
+    @page = Page.new(:url => params[:url], :user => current_user, :title => (params[:title] || params[:url]))
     @page.title = @page.title.titleize unless @page.title.blank?
   end
 
   # GET /pages/1/edit
   def edit
     @page = Page.get(params[:id])
-    @page.author = (cookies[:author] ||= "Anonymous Coward")
   end
 
   # POST /pages
   def create
     @page = Page.new(params[:page])
+    @page.user = current_user
     if @page.save
-      cookies[:author] = @page.author
       redirect_to(wiki_page_url(:url => @page.url))
     else
       render(:action, "new")
@@ -41,8 +42,8 @@ class PagesController
   # PUT /pages/1
   def update
     @page = Page.get(params[:id])
+    @page.user = current_user
     if @page.update_attributes(params[:page])
-      cookies[:author] = @page.author
       redirect_to(wiki_page_url(:url => @page.url))
     else
       render(:action, "edit")

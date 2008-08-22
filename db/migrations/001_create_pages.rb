@@ -5,7 +5,7 @@ migration 1, :create_pages do
       column :id, Serial
       column :url, String
       column :title, String
-      column :author, String
+      column :user_id, Integer
       column :body, Text
       column :created_at, DateTime
       column :updated_at, DateTime

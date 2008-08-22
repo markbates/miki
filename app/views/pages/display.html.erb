@@ -8,7 +8,7 @@
   <% end -%>
 
   <p>
-    Author: <%= link_to(@page.author, wiki_page_url(:url => @page.author)) %><br />
+    Author: <%= link_to(@page.user.display_name, wiki_page_url(:url => @page.user.display_name)) %><br />
     Created at: <%= time_format(@page.created_at) %><br />
     Updated at: <%= time_format(@page.updated_at) %>
   </p>
