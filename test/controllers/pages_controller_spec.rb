@@ -38,7 +38,7 @@ describe PagesController do
     it "should display a page" do
       get wiki_page_url(:url => @page)
       response.should be_successful
-      response.body.should match(@page.body)
+      response.body.should match(@page.body.strip)
       response.body.should match("<title>#{@page.title}</title>")
     end
     
@@ -57,13 +57,13 @@ describe PagesController do
       get pages_new_url
       response.should be_redirected_to(login_url)
       
-      session[:user_id] = @user.id
+      login
       get pages_new_url
       response.should be_successful
     end
     
     it "should pre-populate the url field if it's there" do
-      session[:user_id] = @user.id
+      login
       get pages_new_url(:url => "foo_bar")
       response.should be_successful
       response.body.should match("<input id=\"page_url\" name=\"page\\[url\\]\" size=\"50\" type=\"text\" value=\"foo_bar\" \/>")
@@ -77,7 +77,7 @@ describe PagesController do
       get pages_edit_url(:id => @page.id)
       response.should be_redirected_to(login_url)
       
-      session[:user_id] = @user.id
+      login
       get pages_edit_url(:id => @page.id)
       response.should be_successful
     end
@@ -91,7 +91,7 @@ describe PagesController do
       response.should be_redirected_to(login_url)
       
       lambda {
-        session[:user_id] = @user.id
+        login
         post pages_create_url, :page => {:title => "Hello World", :url => "hello_world", :body => Faker::Lorem.paragraphs}
         response.should be_redirected_to(wiki_page_url(:url => "hello_world"))
         page = assigns(:page)
@@ -106,8 +106,10 @@ describe PagesController do
     it "should require a login" do
       put pages_update_url(:id => @page.id), :page => {:title => "Hello World"}
       response.should be_redirected_to(login_url)
-      
-      session[:user_id] = @user.id
+    end
+    
+    it "should update the page" do
+      login
       old_title = @page.title
       put pages_update_url(:id => @page.id), :page => {:title => "Hello World"}
       response.should be_redirected_to(wiki_page_url(:url => @page))
@@ -125,7 +127,7 @@ describe PagesController do
       response.should be_redirected_to(login_url)
       
       lambda {
-        session[:user_id] = @user.id
+        login
         delete pages_delete_url(:id => @page.id)
         response.should be_redirected_to(pages_index_url)
       }.should change(Page, :count).by(-1)

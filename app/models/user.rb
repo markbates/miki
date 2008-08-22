@@ -13,9 +13,10 @@ class User
   
   attr_accessor :password_confirmation
   
-  validates_is_unique :username
-  validates_is_confirmed :password
   validates_present :username
+  validates_is_unique :username
+  validates_present :password
+  validates_is_confirmed :password
   
   before(:save, :digest_password)
   before(:save, :check_username_for_updates)

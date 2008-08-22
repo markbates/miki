@@ -45,7 +45,7 @@ describe UsersController do
     end
     
     it "should require the owner to edit it" do
-      session[:user_id] = @user.id
+      login
       get users_edit_url(:id => @user)
       response.should be_successful
       assigns(:user).should == @user
@@ -75,7 +75,7 @@ describe UsersController do
     end
     
     it "should require the owner to edit it" do
-      session[:user_id] = @user.id
+      login
       put users_update_url(:id => @user), :user => {:display_name => "Mark Bates"}
       response.should be_redirected_to(users_show_url(:id => @user))
       assigns(:user).should == @user
@@ -89,7 +89,14 @@ describe UsersController do
   
   describe "delete" do
     
-    it "should delete a user"
+    it "should require login" do
+      delete users_update_url(:id => @user)
+      response.should be_redirected_to(login_url)
+    end
+    
+    it "should require the owner to delete it" do
+      login
+    end
     
   end
   
