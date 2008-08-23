@@ -24,6 +24,7 @@ class Page
   
   private
   def handle_url
+    self.url = self.title if url.blank?
     self.url = clean_url(self.url)
   end
   
