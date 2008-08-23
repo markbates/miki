@@ -4,5 +4,7 @@
     <% for page in @pages -%>
     <li><%= link_to(page.title.truncate(25), wiki_page_url(:url => page)) %></li>
     <% end -%>
+    <li>...</li>
+    <li><%= link_to("All Pages", pages_index_url) %></li>
   </ul>
 </li>

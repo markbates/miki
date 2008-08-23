@@ -5,8 +5,4 @@ module RedCloth::Formatters::HTML
     "<script src=\"http://gist.github.com/#{opts[:text].to_i}.js\"></script>"
   end
   
-  # def pre(opts)
-  #   "<pre>#{opts[:text]}</pre>"
-  # end
-  
 end
