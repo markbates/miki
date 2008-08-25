@@ -9,25 +9,25 @@ describe User do
   describe("username") do
     
     # DataMapper validations aren't working correctly, so it's hard to test them.
-    # it "should be unique" do
-    #   user = User.new(:username => @user.username, :password => "password", :password_confirmation => "password")
-    #   user.should_not be_valid
-    #   user.errors.full_messages.should include("Username is already taken")
-    # end
-    #   
-    # it "should be present" do
-    #   user = User.new()
-    #   puts user.errors.full_messages
-    #   user.should_not be_valid
-    #   user.errors.full_messages.should include("Username must not be blank")
-    # end
-    # 
-    # it "should not be allowed to be changed" do
-    #   username = @user.username
-    #   @user.update_attributes(:username => "lskajdf")
-    #   @user.username.should_not == "lskajdf"
-    #   @user.username.should == username
-    # end
+    it "should be unique" do
+      user = User.new(:username => @user.username, :password => "password", :password_confirmation => "password")
+      user.should_not be_valid
+      user.errors.full_messages.should include("Username is already taken")
+    end
+      
+    it "should be present" do
+      user = User.new()
+      puts user.errors.full_messages
+      user.should_not be_valid
+      user.errors.full_messages.should include("Username must not be blank")
+    end
+    
+    it "should not be allowed to be changed" do
+      username = @user.username
+      @user.update_attributes(:username => "lskajdf")
+      @user.username.should_not == "lskajdf"
+      @user.username.should == username
+    end
     
   end
   
