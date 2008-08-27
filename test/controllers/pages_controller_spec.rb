@@ -87,12 +87,12 @@ describe PagesController do
   describe "create" do
     
     it "should require a login" do
-      post pages_create_url, :page => {:title => "Hello World", :url => "hello_world", :body => Faker::Lorem.paragraphs}
+      post pages_create_url, :page => {:title => "Hello World", :url => "hello_world", :body => Faker::Lorem.paragraphs.to_s}
       response.should be_redirected_to(login_url)
       
       lambda {
         login
-        post pages_create_url, :page => {:title => "Hello World", :url => "hello_world", :body => Faker::Lorem.paragraphs}
+        post pages_create_url, :page => {:title => "Hello World", :url => "hello_world", :body => Faker::Lorem.paragraphs.to_s}
         response.should be_redirected_to(wiki_page_url(:url => "hello_world"))
         page = assigns(:page)
         page.title.should == "Hello World"
