@@ -8,6 +8,13 @@ SET check_function_bodies = false;
 SET client_min_messages = warning;
 SET escape_string_warning = off;
 
+--
+-- Name: SCHEMA public; Type: COMMENT; Schema: -; Owner: -
+--
+
+COMMENT ON SCHEMA public IS 'Standard public schema';
+
+
 SET search_path = public, pg_catalog;
 
 SET default_tablespace = '';
@@ -39,25 +46,11 @@ CREATE TABLE pages (
 
 
 --
--- Name: users; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE TABLE users (
-    id integer NOT NULL,
-    username character varying(20) NOT NULL,
-    password character varying(50) NOT NULL,
-    email character varying(200) NOT NULL,
-    display_name character varying(250) NOT NULL,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
 -- Name: pages_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE pages_id_seq
+    START WITH 1
     INCREMENT BY 1
     NO MAXVALUE
     NO MINVALUE
@@ -72,10 +65,26 @@ ALTER SEQUENCE pages_id_seq OWNED BY pages.id;
 
 
 --
+-- Name: users; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE users (
+    id integer NOT NULL,
+    username character varying(20) NOT NULL,
+    "password" character varying(50) NOT NULL,
+    email character varying(200) NOT NULL,
+    display_name character varying(250) NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
 -- Name: users_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE users_id_seq
+    START WITH 1
     INCREMENT BY 1
     NO MAXVALUE
     NO MINVALUE

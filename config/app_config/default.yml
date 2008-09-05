@@ -9,3 +9,5 @@ mack::testing_framework: rspec
 # 1.  Uncomment the code below, and make sure that the framework is the one you want to use
 # 2.  run:  rake generate:javascript
 mack::js_framework: prototype
+
+default_secret_key: 4K45YJ5ZZQRX3QYW5KBEHC5LSH7G4X7ZLZNFDN4W6PD87BE4D487D7DXGM7SRP4ETNCPWPDEHW8RYF86
